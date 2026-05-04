@@ -1,4 +1,4 @@
-# 📁 File Manager CLI
+# 📁 File REDAX CLI
 
 A simple and powerful command-line tool to manage your files — search, move, remove, read, and organize files directly from your terminal.
 
