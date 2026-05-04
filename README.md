@@ -19,7 +19,7 @@ A simple and powerful command-line tool to manage your files — search, move, r
 ## 📂 Project Structure
 
 ```
-file-manager/
+REDAX-CLI/
 │
 ├── main.py                  ← Entry point
 ├── requirements.txt         ← Dependencies
