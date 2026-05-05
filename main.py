@@ -13,16 +13,34 @@ from config.settings import APP_NAME, VERSION
 console = Console()
 
 # Title: REDAX CLI
-Title_REDAX_CLI = ["██████╗ ███████╗██████╗  █████╗ ██╗  ██╗     ██████╗██╗     ██╗",
-                   "██╔══██╗██╔════╝██╔══██╗██╔══██╗╚██╗██╔╝    ██╔════╝██║     ██║",
-                   "██████╔╝█████╗  ██║  ██║███████║ ╚███╔╝     ██║     ██║     ██║",
-                   "██╔══██╗██╔════╝██║  ██║██╔══██║ ██╔██╗     ██║     ██║     ██║",
-                   "██║  ██║███████╗██████╔╝██║  ██║██╔╝ ██╗    ╚██████╗███████╗██║",
-                   "╚═╝  ╚═╝╚══════╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝     ╚═════╝╚══════╝╚═╝"]
+Title_REDAX_CLI = [
+    "██████╗ ███████╗██████╗  █████╗ ██╗  ██╗     ██████╗██╗     ██╗",
+    "██╔══██╗██╔════╝██╔══██╗██╔══██╗╚██╗██╔╝    ██╔════╝██║     ██║",
+    "██████╔╝█████╗  ██║  ██║███████║ ╚███╔╝     ██║     ██║     ██║",
+    "██╔══██╗██╔════╝██║  ██║██╔══██║ ██╔██╗     ██║     ██║     ██║",
+    "██║  ██║███████╗██████╔╝██║  ██║██╔╝ ██╗    ╚██████╗███████╗██║",
+    "╚═╝  ╚═╝╚══════╝╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝     ╚═════╝╚══════╝╚═╝"]
 
+@click.group()
+def cli():
+    """"Simple and pwerful command-line tool to manage your files."""
+    pass
+
+@cli.command()
+@click.option('--name', help='File name to search for')
+@click.option('--ext', help='File extension (e.g. .txt)')
+@click.option('--path', default='.', help='Directory to search in')
+def search(name, ext, path):
+    """Search for files by name or extension."""
+    search_files(name, ext, path)
 
 # run
 if __name__ == "__main__":
-    for i in range(len(Title_REDAX_CLI)):
-        console.print(Title_REDAX_CLI[i])
-    console.print("\nWelcome to REDAX CLI! Please enter your command:")
+    """Display the Title"""
+    for line in Title_REDAX_CLI:
+        console.print(f"[bold cyan]{line}[/bold cyan]")
+
+    console.print(f"\n[bold white]Welcome to {APP_NAME} v{VERSION}![/bold white]")
+    console.print("Type [bold yellow]--help [/bold yellow] to see avialable commands.\n")
+
+    cli()
