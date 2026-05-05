@@ -34,6 +34,46 @@ def search(name, ext, path):
     """Search for files by name or extension."""
     search_files(name, ext, path)
 
+@cli.command()
+@click.option('--path', required=True, help='Directory to organize')
+def organize(path):
+    """Automatically organize files by type or date."""
+    organize_folder(path)
+
+@cli.command()
+@click.option('--src', required=True, help='Source file path')
+@click.option('--dest', required=True, help='Destination directory')
+def move(src, dest):
+    """Move a file to a new location."""
+    move_file(src, dest)
+
+@cli.command()
+@click.option('--path', required=True, help='Path to the file to delete')
+def remove(path):
+    """Delete a file permanently."""
+    if click.confirm(f"Are you sure you want to delete {path}?"):
+        remove_file(path)
+
+@cli.command()
+@click.option('--path', required=True, help='Path to the file to read')
+def read(path):
+    """Read and display full file content."""
+    read_content(path)
+
+@cli.command(name="read-line")
+@click.option('--path', required=True, help='Path to the file')
+@click.option('--line', type=int, required=True, help='Line number to read')
+def read_line(path, line):
+    """Read a specific line number from a file."""
+    read_specific_line(path, line)
+
+@cli.command()
+@click.option('--name', required=True, help='Name of the new file')
+@click.option('--path', default='.', help='Directory for the new file')
+def create(name, path):
+    """Create a new .txt file."""
+    create_file(name, path)
+
 # run
 if __name__ == "__main__":
     """Display the Title"""
